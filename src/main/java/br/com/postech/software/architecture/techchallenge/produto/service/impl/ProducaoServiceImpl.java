@@ -1,10 +1,7 @@
 package br.com.postech.software.architecture.techchallenge.produto.service.impl;
 
-import br.com.postech.software.architecture.techchallenge.produto.dto.PedidoDTO;
-import br.com.postech.software.architecture.techchallenge.produto.dto.ProducaoUpdateDTO;
 import br.com.postech.software.architecture.techchallenge.produto.exception.BusinessException;
 import br.com.postech.software.architecture.techchallenge.produto.model.PedidoProducao;
-import br.com.postech.software.architecture.techchallenge.produto.repository.PedidoJpaRepository;
 import br.com.postech.software.architecture.techchallenge.produto.repository.PedidoProducaoRepository;
 import br.com.postech.software.architecture.techchallenge.produto.service.ProducaoService;
 import lombok.AllArgsConstructor;
