@@ -1,6 +1,6 @@
 package br.com.postech.software.architecture.techchallenge.produto.enums;
 
-public enum StatusPedidoEnum implements APIEnum{
+public enum StatusPedidoEnum {
 
 	DESCONHECIDO(0, "Desconhecido"),
 	REALIZADO(1, "Realizado"),
@@ -18,11 +18,9 @@ public enum StatusPedidoEnum implements APIEnum{
 		this.descricao = descricao;
 	}
 
-	@Override
 	public Integer getValue() {
 		return value;
 	}
-	
 
 	public String getDescricao() {
 		return descricao;

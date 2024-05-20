@@ -1,15 +1,14 @@
 package br.com.postech.software.architecture.techchallenge.produto.model;
 
 
-import jakarta.validation.constraints.NotEmpty;
-import lombok.Getter;
+import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Getter
-@Document("PedidoProducao")
+@Data
+@Document(collation = "PedidoProducao")
 public class PedidoProducao {
 
     @Id
@@ -18,7 +17,6 @@ public class PedidoProducao {
     private Cliente cliente;
     private String dataPedido;
     private String statusPedido;
-    @NotEmpty
     private List<PedidoProduto> produtos;
 
     public void update(PedidoProducao pedidoProducao) {

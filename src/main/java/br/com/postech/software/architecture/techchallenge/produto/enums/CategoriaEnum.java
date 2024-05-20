@@ -1,6 +1,6 @@
 package br.com.postech.software.architecture.techchallenge.produto.enums;
 
-public enum CategoriaEnum implements APIEnum{
+public enum CategoriaEnum {
 	
 	DESCONHECIDO(0, "Desconhecida"),
 	LANCHE(1, "Lanche"),
@@ -16,7 +16,6 @@ public enum CategoriaEnum implements APIEnum{
 		this.descricao = descricao;
 	}
 	
-	@Override
 	public Integer getValue() {
 		return value;
 	}

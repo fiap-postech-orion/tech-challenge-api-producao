@@ -1,6 +1,6 @@
 package br.com.postech.software.architecture.techchallenge.produto.exception;
 
-public class BusinessException extends ApplicationException {
+public class BusinessException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 
     public BusinessException(String mensagem) {

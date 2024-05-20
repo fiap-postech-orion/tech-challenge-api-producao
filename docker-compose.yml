@@ -1,11 +1,5 @@
-version: '3.1'
+version: '3.6'
 services:
-  app:
-    build: .
-    ports:
-      - "8080:8080"
-    depends_on:
-      - mongoDB
   mongoDB:
     image: mongo
     ports:
@@ -13,3 +7,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: mongo
       MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - dbdata6:/data/db
+volumes:
+  dbdata6:

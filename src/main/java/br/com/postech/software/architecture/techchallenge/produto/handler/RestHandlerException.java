@@ -2,8 +2,6 @@ package br.com.postech.software.architecture.techchallenge.produto.handler;
 
 import br.com.postech.software.architecture.techchallenge.produto.exception.BusinessException;
 import br.com.postech.software.architecture.techchallenge.produto.exception.ErrorDetails;
-import br.com.postech.software.architecture.techchallenge.produto.exception.NotFoundException;
-import br.com.postech.software.architecture.techchallenge.produto.exception.PersistenceException;
 import com.google.gson.Gson;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -37,24 +35,6 @@ public class RestHandlerException extends ResponseEntityExceptionHandler {
                 apiExecption.getMessage());
 
         return new ResponseEntity<>(apiExeceptionDetails, HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler(PersistenceException.class)
-    public ResponseEntity<ErrorDetails> handlePersistenceException(PersistenceException exeception) {
-        ErrorDetails apiExeceptionDetails = new ErrorDetails(
-                HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                exeception.getMessage());
-
-        return new ResponseEntity<>(apiExeceptionDetails, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-
-    @ExceptionHandler(NotFoundException.class)
-    public ResponseEntity<ErrorDetails> handleNotFoundException(NotFoundException exception) {
-        ErrorDetails apiExceptionDetails = new ErrorDetails(
-                HttpStatus.NOT_FOUND.value(),
-                exception.getMessage());
-
-        return new ResponseEntity<>(apiExceptionDetails, HttpStatus.NOT_FOUND);
     }
 
     @Override
