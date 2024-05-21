@@ -9,7 +9,5 @@ public interface ProducaoService {
 
 	List<PedidoProducao> findAllByStatusPedido(String status) throws BusinessException;
 
-	public PedidoProducao findByNumeroPedido(Long numeroPedido) throws BusinessException;
-
 	PedidoProducao salvaPedido(PedidoProducao producaoUpdateDTO);
 }

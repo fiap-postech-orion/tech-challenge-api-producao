@@ -4,7 +4,10 @@ import br.com.postech.software.architecture.techchallenge.produto.exception.Busi
 import br.com.postech.software.architecture.techchallenge.produto.model.PedidoProducao;
 import br.com.postech.software.architecture.techchallenge.produto.repository.PedidoProducaoRepository;
 import br.com.postech.software.architecture.techchallenge.produto.service.ProducaoService;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import lombok.AllArgsConstructor;
+import org.springframework.http.converter.json.GsonFactoryBean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,16 +21,7 @@ public class ProducaoServiceImpl implements ProducaoService {
 
 	@Override
 	public List<PedidoProducao> findAllByStatusPedido(String status) throws BusinessException{
-		return repository.findAllByStatus(status);
-	}
-
-	@Override
-	public PedidoProducao findByNumeroPedido(Long numeroPedido) throws BusinessException {
-		Optional<PedidoProducao> optPedidoProducao = repository.findByNumeroPedido(numeroPedido);
-		if(optPedidoProducao.isPresent()){
-			return optPedidoProducao.get();
-		}
-		throw new BusinessException("Pedido não encontrado");
+		return repository.findAll();
 	}
 
 	private Optional<PedidoProducao> findByUuid(String uuid) throws BusinessException {
@@ -47,9 +41,11 @@ public class ProducaoServiceImpl implements ProducaoService {
 		if(optPedidoProducao.isPresent()){
 			PedidoProducao existingPedidoProducao = optPedidoProducao.get();
 			existingPedidoProducao.update(newPedidoProducao);
+//			return repository.save(gson.toJson(existingPedidoProducao));
 			return repository.save(existingPedidoProducao);
 		}
 		else {
+//			return repository.save(gson.toJson(newPedidoProducao));
 			return repository.save(newPedidoProducao);
 		}
 	}
