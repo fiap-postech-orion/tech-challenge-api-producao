@@ -17,19 +17,14 @@ public class ProducaoController {
     @Autowired
     private ProducaoService producaoService;
 
-    //PRODUCAO
     @GetMapping(produces = MediaType.APPLICATION_JSON)
     public ResponseEntity<List<PedidoProducao>> listarTodosPedidosAtivos(@RequestParam String status) throws Exception {
         return new ResponseEntity<>(producaoService.findAllByStatusPedido(status), HttpStatus.OK);
     }
 
-    //PRODUCAO
-    @GetMapping(path = "/{idPedido}", produces = MediaType.APPLICATION_JSON)
-    public ResponseEntity<PedidoProducao> buscarPedido(@PathVariable Long idPedido) throws Exception {
-        return new ResponseEntity<>(producaoService.findByNumeroPedido(idPedido), HttpStatus.OK);
-    }
     @PostMapping(produces = MediaType.APPLICATION_JSON)
-    public ResponseEntity<PedidoProducao> salvaPedido(@RequestBody PedidoProducao pedidoProducao) throws Exception {
-        return new ResponseEntity<>(producaoService.salvaPedido(pedidoProducao), HttpStatus.OK);
+    public ResponseEntity<HttpStatus> salvaPedido(@RequestBody PedidoProducao pedidoProducao) throws Exception {
+        producaoService.salvaPedido(pedidoProducao);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
